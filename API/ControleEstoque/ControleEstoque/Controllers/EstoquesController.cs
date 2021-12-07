@@ -9,25 +9,25 @@ using ControleEstoque.Models;
 
 namespace ControleEstoque.Controllers
 {
-    [Route("api/EstoqueController")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class EstoqueController : ControllerBase
+    public class EstoquesController : ControllerBase
     {
-        private readonly EstoqueContext _context;
+        private readonly Context _context;
 
-        public EstoqueController(EstoqueContext context)
+        public EstoquesController(Context context)
         {
             _context = context;
         }
 
-        // GET: api/Estoque
+        // GET: api/Estoques
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Estoque>>> Getestoques()
         {
             return await _context.estoques.ToListAsync();
         }
 
-        // GET: api/Estoque/5
+        // GET: api/Estoques/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Estoque>> GetEstoque(long id)
         {
@@ -41,7 +41,7 @@ namespace ControleEstoque.Controllers
             return estoque;
         }
 
-        // PUT: api/Estoque/5
+        // PUT: api/Estoques/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutEstoque(long id, Estoque estoque)
@@ -72,7 +72,7 @@ namespace ControleEstoque.Controllers
             return NoContent();
         }
 
-        // POST: api/Estoque
+        // POST: api/Estoques
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Estoque>> PostEstoque(Estoque estoque)
@@ -80,11 +80,10 @@ namespace ControleEstoque.Controllers
             _context.estoques.Add(estoque);
             await _context.SaveChangesAsync();
 
-            //return CreatedAtAction("GetEstoque", new { id = estoque.id }, estoque);
-            return CreatedAtAction(nameof(GetEstoque), new { id = estoque.id }, estoque);
+            return CreatedAtAction("GetEstoque", new { id = estoque.id }, estoque);
         }
 
-        // DELETE: api/Estoque/5
+        // DELETE: api/Estoques/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEstoque(long id)
         {

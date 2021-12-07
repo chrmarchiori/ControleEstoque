@@ -9,29 +9,29 @@ using ControleEstoque.Models;
 
 namespace ControleEstoque.Controllers
 {
-    [Route("api/[Controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class ProdutosController : ControllerBase
     {
-        private readonly ProdutoContext _context;
+        private readonly Context _context;
 
-        public ProdutosController(ProdutoContext context)
+        public ProdutosController(Context context)
         {
             _context = context;
         }
 
         // GET: api/Produtos
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Produto>>> Getprodutos()
+        public async Task<ActionResult<IEnumerable<Produto>>> Getproduto()
         {
-            return await _context.produtos.ToListAsync();
+            return await _context.produto.ToListAsync();
         }
 
         // GET: api/Produtos/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Produto>> GetProduto(long id)
         {
-            var produto = await _context.produtos.FindAsync(id);
+            var produto = await _context.produto.FindAsync(id);
 
             if (produto == null)
             {
@@ -77,23 +77,23 @@ namespace ControleEstoque.Controllers
         [HttpPost]
         public async Task<ActionResult<Produto>> PostProduto(Produto produto)
         {
-            _context.produtos.Add(produto);
+            _context.produto.Add(produto);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetProduto), new { id = produto.id }, produto);
+            return CreatedAtAction("GetProduto", new { id = produto.id }, produto);
         }
 
         // DELETE: api/Produtos/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduto(long id)
         {
-            var produto = await _context.produtos.FindAsync(id);
+            var produto = await _context.produto.FindAsync(id);
             if (produto == null)
             {
                 return NotFound();
             }
 
-            _context.produtos.Remove(produto);
+            _context.produto.Remove(produto);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -101,7 +101,7 @@ namespace ControleEstoque.Controllers
 
         private bool ProdutoExists(long id)
         {
-            return _context.produtos.Any(e => e.id == id);
+            return _context.produto.Any(e => e.id == id);
         }
     }
 }

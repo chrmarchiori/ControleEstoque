@@ -13,25 +13,25 @@ namespace ControleEstoque.Controllers
     [ApiController]
     public class ItensVendaController : ControllerBase
     {
-        private readonly ItemVendaContext _context;
+        private readonly Context _context;
 
-        public ItensVendaController(ItemVendaContext context)
+        public ItensVendaController(Context context)
         {
             _context = context;
         }
 
         // GET: api/ItensVenda
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ItemVenda>>> GetitensVenda()
+        public async Task<ActionResult<IEnumerable<ItemVenda>>> GetitemVenda()
         {
-            return await _context.itensVenda.ToListAsync();
+            return await _context.itemVenda.ToListAsync();
         }
 
         // GET: api/ItensVenda/5
         [HttpGet("{id}")]
         public async Task<ActionResult<ItemVenda>> GetItemVenda(int? id)
         {
-            var itemVenda = await _context.itensVenda.FindAsync(id);
+            var itemVenda = await _context.itemVenda.FindAsync(id);
 
             if (itemVenda == null)
             {
@@ -77,7 +77,7 @@ namespace ControleEstoque.Controllers
         [HttpPost]
         public async Task<ActionResult<ItemVenda>> PostItemVenda(ItemVenda itemVenda)
         {
-            _context.itensVenda.Add(itemVenda);
+            _context.itemVenda.Add(itemVenda);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetItemVenda", new { id = itemVenda.id }, itemVenda);
@@ -87,13 +87,13 @@ namespace ControleEstoque.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteItemVenda(int? id)
         {
-            var itemVenda = await _context.itensVenda.FindAsync(id);
+            var itemVenda = await _context.itemVenda.FindAsync(id);
             if (itemVenda == null)
             {
                 return NotFound();
             }
 
-            _context.itensVenda.Remove(itemVenda);
+            _context.itemVenda.Remove(itemVenda);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -101,7 +101,7 @@ namespace ControleEstoque.Controllers
 
         private bool ItemVendaExists(int? id)
         {
-            return _context.itensVenda.Any(e => e.id == id);
+            return _context.itemVenda.Any(e => e.id == id);
         }
     }
 }
