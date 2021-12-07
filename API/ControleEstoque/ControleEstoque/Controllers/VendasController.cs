@@ -9,29 +9,29 @@ using ControleEstoque.Models;
 
 namespace ControleEstoque.Controllers
 {
-    [Route("api/ControleEstoque")]
+    [Route("api/[controller]")]
     [ApiController]
     public class VendasController : ControllerBase
     {
-        private readonly VendaContext _context;
+        private readonly Context _context;
 
-        public VendasController(VendaContext context)
+        public VendasController(Context context)
         {
             _context = context;
         }
 
         // GET: api/Vendas
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Venda>>> Getvendas()
+        public async Task<ActionResult<IEnumerable<Venda>>> Getvenda()
         {
-            return await _context.vendas.ToListAsync();
+            return await _context.venda.ToListAsync();
         }
 
         // GET: api/Vendas/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Venda>> GetVenda(int id)
         {
-            var venda = await _context.vendas.FindAsync(id);
+            var venda = await _context.venda.FindAsync(id);
 
             if (venda == null)
             {
@@ -77,23 +77,23 @@ namespace ControleEstoque.Controllers
         [HttpPost]
         public async Task<ActionResult<Venda>> PostVenda(Venda venda)
         {
-            _context.vendas.Add(venda);
+            _context.venda.Add(venda);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetVenda), new { id = venda.id }, venda);
+            return CreatedAtAction("GetVenda", new { id = venda.id }, venda);
         }
 
         // DELETE: api/Vendas/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteVenda(int id)
         {
-            var venda = await _context.vendas.FindAsync(id);
+            var venda = await _context.venda.FindAsync(id);
             if (venda == null)
             {
                 return NotFound();
             }
 
-            _context.vendas.Remove(venda);
+            _context.venda.Remove(venda);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -101,7 +101,7 @@ namespace ControleEstoque.Controllers
 
         private bool VendaExists(int id)
         {
-            return _context.vendas.Any(e => e.id == id);
+            return _context.venda.Any(e => e.id == id);
         }
     }
 }

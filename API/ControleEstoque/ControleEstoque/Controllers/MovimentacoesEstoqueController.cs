@@ -13,25 +13,25 @@ namespace ControleEstoque.Controllers
     [ApiController]
     public class MovimentacoesEstoqueController : ControllerBase
     {
-        private readonly MovimentacaoEstoqueContext _context;
+        private readonly Context _context;
 
-        public MovimentacoesEstoqueController(MovimentacaoEstoqueContext context)
+        public MovimentacoesEstoqueController(Context context)
         {
             _context = context;
         }
 
         // GET: api/MovimentacoesEstoque
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MovimentacaoEstoque>>> GetmovimentacoesEstoque()
+        public async Task<ActionResult<IEnumerable<MovimentacaoEstoque>>> GetmovimentacaoEstoque()
         {
-            return await _context.movimentacoesEstoque.ToListAsync();
+            return await _context.movimentacaoEstoque.ToListAsync();
         }
 
         // GET: api/MovimentacoesEstoque/5
         [HttpGet("{id}")]
         public async Task<ActionResult<MovimentacaoEstoque>> GetMovimentacaoEstoque(int? id)
         {
-            var movimentacaoEstoque = await _context.movimentacoesEstoque.FindAsync(id);
+            var movimentacaoEstoque = await _context.movimentacaoEstoque.FindAsync(id);
 
             if (movimentacaoEstoque == null)
             {
@@ -77,7 +77,7 @@ namespace ControleEstoque.Controllers
         [HttpPost]
         public async Task<ActionResult<MovimentacaoEstoque>> PostMovimentacaoEstoque(MovimentacaoEstoque movimentacaoEstoque)
         {
-            _context.movimentacoesEstoque.Add(movimentacaoEstoque);
+            _context.movimentacaoEstoque.Add(movimentacaoEstoque);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetMovimentacaoEstoque", new { id = movimentacaoEstoque.id }, movimentacaoEstoque);
@@ -87,13 +87,13 @@ namespace ControleEstoque.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMovimentacaoEstoque(int? id)
         {
-            var movimentacaoEstoque = await _context.movimentacoesEstoque.FindAsync(id);
+            var movimentacaoEstoque = await _context.movimentacaoEstoque.FindAsync(id);
             if (movimentacaoEstoque == null)
             {
                 return NotFound();
             }
 
-            _context.movimentacoesEstoque.Remove(movimentacaoEstoque);
+            _context.movimentacaoEstoque.Remove(movimentacaoEstoque);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -101,7 +101,7 @@ namespace ControleEstoque.Controllers
 
         private bool MovimentacaoEstoqueExists(int? id)
         {
-            return _context.movimentacoesEstoque.Any(e => e.id == id);
+            return _context.movimentacaoEstoque.Any(e => e.id == id);
         }
     }
 }
