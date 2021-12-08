@@ -33,10 +33,13 @@ namespace ControleEstoque
 
              */
 
+            services.AddControllers();
+
             services.AddDbContext<Context>(opt =>
                 opt.UseInMemoryDatabase("Context"));
 
-            services.AddControllers();            
+            services.AddCors();
+
 
         }
 
@@ -62,6 +65,10 @@ namespace ControleEstoque
             app.UseHttpsRedirection();
             app.UseRouting();
 
+            app.UseCors(builder => builder.WithOrigins("http://localhost:3000")
+                                .AllowAnyMethod()
+                                .AllowAnyHeader());
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -71,6 +78,7 @@ namespace ControleEstoque
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
+            
         }
     }
 }

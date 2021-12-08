@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ControleEstoque.Models;
 
+
 namespace ControleEstoque.Controllers
 {
     [Route("api/[controller]")]

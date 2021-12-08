@@ -9754,19 +9754,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Usuario\\.nuget\\packages\\": {}
+    "C:\\Users\\chrma\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Trabalho\\ControleEstoque\\API\\ControleEstoque\\ControleEstoque\\ControleEstoque.csproj",
+      "projectUniqueName": "C:\\Workspace\\ControleEstoque\\API\\ControleEstoque\\ControleEstoque\\ControleEstoque.csproj",
       "projectName": "ControleEstoque",
-      "projectPath": "C:\\Trabalho\\ControleEstoque\\API\\ControleEstoque\\ControleEstoque\\ControleEstoque.csproj",
-      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "C:\\Trabalho\\ControleEstoque\\API\\ControleEstoque\\ControleEstoque\\obj\\",
+      "projectPath": "C:\\Workspace\\ControleEstoque\\API\\ControleEstoque\\ControleEstoque\\ControleEstoque.csproj",
+      "packagesPath": "C:\\Users\\chrma\\.nuget\\packages\\",
+      "outputPath": "C:\\Workspace\\ControleEstoque\\API\\ControleEstoque\\ControleEstoque\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\chrma\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

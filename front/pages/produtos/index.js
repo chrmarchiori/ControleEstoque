@@ -4,13 +4,19 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import api from '../../api';
 
+export const axiosConfig = {
+  
+}
+
 export default function Produtos() {
+
+  
   
   const [produtos, setProdutos] = useState([])
 
   const getProdutos = async () => {
     try {
-      const {data} = await api.get("/produtos");
+      const {data} = await api.get("https://localhost:44380/api/produtos");
       console.log(data);
       setProdutos(data);
     } catch (error) {
@@ -48,15 +54,19 @@ export default function Produtos() {
             </thead>
             <tbody>
               {produtos.map(produto => (
-                <tr>
+                <tr key={produto.id}>
                   <th scope="row">{produto.id}</th>
                   <td>{produto.descricao}</td>
                   <td>{produto.preco}</td>
-                  <td>@mdo</td>
+                  <td>
+                    <button type="button" class="btn btn-danger">Excluir</button>
+                  </td>
                 </tr>
               ))}              
             </tbody>
           </table>
+
+          <button type="button" class="btn btn-danger">Excluir</button>
 
         <Link href="/produtos/incluir">
           <a className="card">
