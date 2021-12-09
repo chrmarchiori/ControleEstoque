@@ -37,18 +37,26 @@ export default function Produtos() {
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
       </Head>
 
+      <div class="position-relative">
+        <div class="position-absolute top-0 start-0">             
+          <Link href="/">
+            <button type="button" class="btn-close" aria-label="Close"></button> 
+          </Link>        
+        </div>
+      </div>
+
       <main>
         <h1 className="title">
           Produtos
         </h1>
 
-          <table class="table table-striped table-hover">
+          <table class="table table-striped table-hover"
+            style={{width: '1000px', marginTop: '30px'}}>
             <thead>
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Descrição</th>
                 <th scope="col">Preço</th>
-                <th scope="col"></th>
                 <th scope="col"></th>
               </tr>
             </thead>
@@ -65,8 +73,6 @@ export default function Produtos() {
               ))}              
             </tbody>
           </table>
-
-          <button type="button" class="btn btn-danger">Excluir</button>
 
         <Link href="/produtos/incluir">
           <a className="card">
@@ -86,7 +92,6 @@ export default function Produtos() {
           display: flex;
           flex-direction: column;
           justify-content: center;
-          align-items: center;
         }
 
         main {

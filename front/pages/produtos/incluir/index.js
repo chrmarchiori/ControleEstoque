@@ -30,50 +30,54 @@ export default function IncluirProduto() {
       <Head>
         <title>ControleEstoque-Produtos</title>
         <link rel="icon" href="/favicon.ico" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
       </Head>
+
+      <div class="position-relative">
+        <div class="position-absolute top-0 start-0">             
+          <Link href="/produtos">
+            <button type="button" class="btn-close" aria-label="Close"></button> 
+          </Link>        
+        </div>
+      </div>
 
       <main>
         <h1 className="title">
           Incluir Produto
         </h1>
-
-        <form onSubmit={onSubmit} style={{ marginTop: '15px'}}>
-            <label 
-                style={{ marginRight: '5px'}} 
-                for="descricao"
-            >
-                Descrição
-            </label>
-            
+      
+        <form style={{marginTop: '30px'}} onSubmit={onSubmit} class="row g-3">
+          <div class="col-md-6">
+            <label for="descricao" class="form-label">Descrição</label>
             <input 
                 value={formulario.descricao} 
                 onChange={(e) => setFormulario({...formulario, descricao:e.target.value})} 
-                style={{ marginRight: '10px'}} 
                 id="descricao" 
                 type="text" 
                 autocomplete="Descrição" 
                 required 
+                class="form-control"
             />
-            
-            <label 
-                style={{ marginRight: '5px'}} 
-                for="preco"
-            >
-                Preço            
-            </label>
-
+          </div>
+          <div class="col-md-6">
+            <label for="preco" class="form-label">Preço</label>
             <input 
                 value={formulario.preco} 
                 onChange={(e) => setFormulario({...formulario, preco:e.target.value})}
-                style={{ marginRight: '20px'}} 
                 id="preco" 
                 type="number" 
                 autocomplete="Preço" 
                 required 
+                class="form-control"
             />
-
-            <button type="submit">Registre</button>
+          </div>
+          
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+          </div>
         </form>
+
       </main>
 
       <footer>
@@ -87,7 +91,6 @@ export default function IncluirProduto() {
           display: flex;
           flex-direction: column;
           justify-content: center;
-          align-items: center;
         }
 
         main {
