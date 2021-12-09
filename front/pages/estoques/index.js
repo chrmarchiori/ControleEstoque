@@ -1,28 +1,82 @@
 import Head from 'next/head'
+import Link from 'next/link'
+import { useEffect } from 'react';
+import { useState } from 'react';
+import api from '../../api';
 
-export default function Home() {
+export default function Estoques() {
+
+  
+  
+  const [estoques, setEstoques] = useState([])
+
+  const getEstoques = async () => {
+    try {
+      const {data} = await api.get("https://localhost:44380/api/estoques");
+      console.log(data);
+      setEstoques(data);
+    } catch (error) {
+      console.log(error);  
+    }
+  }
+
+  useEffect(() => {
+    getEstoques();
+  }, [])
+  
   return (
     <div className="container">
       <Head>
-        <title>Create Next App</title>
+        <title>ControleEstoque-Estoques</title>
         <link rel="icon" href="/favicon.ico" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
       </Head>
+
+      <div class="position-relative">
+        <div class="position-absolute top-0 start-0">             
+          <Link href="/">
+            <button type="button" class="btn-close" aria-label="Close"></button> 
+          </Link>        
+        </div>
+      </div>
 
       <main>
         <h1 className="title">
-          Estoque
+          Estoques
         </h1>
+
+          <table class="table table-striped table-hover"
+            style={{width: '1000px', marginTop: '30px'}}>
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Descrição</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {estoques.map(estoque => (
+                <tr key={estoque.id}>
+                  <th scope="row">{estoque.id}</th>
+                  <td>{estoque.descricao}</td>
+                  <td>
+                    <button type="button" class="btn btn-danger">Excluir</button>
+                  </td>
+                </tr>
+              ))}              
+            </tbody>
+          </table>
+
+        <Link href="/estoques/incluir">
+          <a className="card">
+            <p>Incluir Estoque</p>
+          </a>
+        </Link>
       </main>
 
       <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel" className="logo" />
-        </a>
+        <p>Criado por Chrystian e Dieimesson</p>
       </footer>
 
       <style jsx>{`
@@ -32,7 +86,6 @@ export default function Home() {
           display: flex;
           flex-direction: column;
           justify-content: center;
-          align-items: center;
         }
 
         main {

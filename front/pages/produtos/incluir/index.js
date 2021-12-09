@@ -17,13 +17,18 @@ export default function IncluirProduto() {
         try {
             const response = await api.post("/produtos", formulario);    
             alert("Seu produto foi salvo");
+            myModal.show();
             setFormulario({descricao: "", preco: 0});
         } catch (error) {
             console.log(error);
+            myModal.show();
             alert("X Não foi possível sua requisição X");     
-        }
-        
+        }        
     }
+
+    var myModal = new bootstrap.Modal(document.getElementById('myModal'), {
+      keyboard: false
+    })
 
   return (
     <div className="container">
