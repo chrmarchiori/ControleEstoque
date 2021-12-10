@@ -33,10 +33,13 @@ namespace ControleEstoque
 
              */
 
-            services.AddControllers();
+            var connectionString = Configuration["dbContextSettings:ConnectionString"];
 
-            services.AddDbContext<Context>(opt =>
-                opt.UseInMemoryDatabase("Context"));
+            services.AddDbContext<Context>(options =>
+                options.UseNpgsql(connectionString)
+            );
+
+            services.AddControllers();
 
             services.AddCors();
 
