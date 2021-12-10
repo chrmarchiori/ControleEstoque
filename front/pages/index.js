@@ -25,10 +25,12 @@ export default function Home() {
         </Link>
 
 
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
+        <Link  href="/estoques">
+          <a className="card">
+            <h3>Estoques &rarr;</h3>
+            <p>Acesse para visualizar os estoques disponíveis</p>
           </a>
+        </Link>
 
           <a
             href="https://github.com/vercel/next.js/tree/master/examples"
