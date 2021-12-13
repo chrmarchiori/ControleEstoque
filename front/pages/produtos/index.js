@@ -10,6 +10,18 @@ export const axiosConfig = {
 
 export default function Produtos() {
 
+  const onDelete = async (event, id) => {
+    event.preventDefault();
+    console.log("tá passando");
+
+    try {
+        await api.delete("https://localhost:44380/api/produtos/" + id);    
+        alert("Seu produto foi deletado com sucesso");
+    } catch (error) {
+        console.log(error);
+        alert("X Não foi possível deletar seu produto X");     
+    }        
+  }
   
   
   const [produtos, setProdutos] = useState([])
@@ -50,7 +62,8 @@ export default function Produtos() {
           Produtos
         </h1>
 
-          <table class="table table-striped table-hover"
+          <table
+            class="table table-striped table-hover"
             style={{width: '1000px', marginTop: '30px'}}>
             <thead>
               <tr>

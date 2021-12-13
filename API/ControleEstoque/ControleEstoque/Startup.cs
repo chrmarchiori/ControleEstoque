@@ -81,7 +81,9 @@ namespace ControleEstoque
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
-            
+
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
         }
     }
 }

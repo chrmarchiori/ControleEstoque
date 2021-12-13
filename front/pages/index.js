@@ -32,23 +32,20 @@ export default function Home() {
           </a>
         </Link>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
+        <Link  href="/vendas">
+          <a className="card">
+            <h3>Vendas &rarr;</h3>
+            <p>Acesse para visualizar as vendas realizadas</p>
           </a>
+        </Link>
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
+        <Link  href="/movimentacoes">
+          <a className="card">
+            <h3>Movimentações &rarr;</h3>
+            <p>Acesse para visualizar as movimentações realizadas</p>
           </a>
+        </Link>
+
         </div>
       </main>
 

@@ -3,11 +3,10 @@ import Link from 'next/link'
 import { useState } from 'react';
 import api from '../../../api';
 
-export default function IncluirProduto() {
+export default function IncluirEstoque() {
 
     const [formulario, setFormulario] = useState({
-        descricao: "",
-        preco: 0
+        descricao: ""
     })
 
     const onSubmit = async (event) => {
@@ -15,12 +14,12 @@ export default function IncluirProduto() {
         console.log(formulario);
         
         try {
-            const response = await api.post("/produtos", formulario);    
-            alert("Seu produto foi salvo");
-            setFormulario({descricao: "", preco: 0});
+            const response = await api.post("https://localhost:44380/api/estoques", formulario);    
+            alert("Seu estoque foi salvo");
+            setFormulario({descricao: ""});
         } catch (error) {
             console.log(error);
-            alert("X Não foi possível sua requisição X");     
+            alert("X Não foi possível realizar sua requisição X");     
         }
         
     }
@@ -28,7 +27,7 @@ export default function IncluirProduto() {
   return (
     <div className="container">
       <Head>
-        <title>ControleEstoque-Produtos</title>
+        <title>ControleEstoque-Estoques</title>
         <link rel="icon" href="/favicon.ico" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -36,7 +35,7 @@ export default function IncluirProduto() {
 
       <div class="position-relative">
         <div class="position-absolute top-0 start-0">             
-          <Link href="/produtos">
+          <Link href="/estoques">
             <button type="button" class="btn-close" aria-label="Close"></button> 
           </Link>        
         </div>
@@ -44,7 +43,7 @@ export default function IncluirProduto() {
 
       <main>
         <h1 className="title">
-          Incluir Produto
+          Incluir Estoque
         </h1>
       
         <form style={{marginTop: '30px'}} onSubmit={onSubmit} class="row g-3">
@@ -59,20 +58,7 @@ export default function IncluirProduto() {
                 required 
                 class="form-control"
             />
-          </div>
-          <div class="col-md-6">
-            <label for="preco" class="form-label">Preço</label>
-            <input 
-                value={formulario.preco} 
-                onChange={(e) => setFormulario({...formulario, preco:e.target.value})}
-                id="preco" 
-                type="number" 
-                autocomplete="Preço" 
-                required 
-                class="form-control"
-            />
-          </div>
-          
+          </div>          
           <div class="col-12">
             <button type="submit" class="btn btn-primary">Salvar</button>
           </div>

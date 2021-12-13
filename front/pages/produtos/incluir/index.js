@@ -5,30 +5,25 @@ import api from '../../../api';
 
 export default function IncluirProduto() {
 
-    const [formulario, setFormulario] = useState({
-        descricao: "",
-        preco: 0
-    })
+  const [formulario, setFormulario] = useState({
+      descricao: "",
+      preco: 0
+  })
 
-    const onSubmit = async (event) => {
-        event.preventDefault();
-        console.log(formulario);
-        
-        try {
-            const response = await api.post("/produtos", formulario);    
-            alert("Seu produto foi salvo");
-            myModal.show();
-            setFormulario({descricao: "", preco: 0});
-        } catch (error) {
-            console.log(error);
-            myModal.show();
-            alert("X Não foi possível sua requisição X");     
-        }        
-    }
-
-    var myModal = new bootstrap.Modal(document.getElementById('myModal'), {
-      keyboard: false
-    })
+  const onSubmit = async (event) => {
+      event.preventDefault();
+      console.log(formulario);
+      
+      try {
+          api.create(formulario)
+          const response = await api.post("https://localhost:44380/api/produtos", formulario);    
+          alert("Seu produto foi salvo");
+          setFormulario({descricao: "", preco: 0});
+      } catch (error) {
+          console.log(error);
+          alert("X Não foi possível sua requisição X");     
+      }        
+  }
 
   return (
     <div className="container">

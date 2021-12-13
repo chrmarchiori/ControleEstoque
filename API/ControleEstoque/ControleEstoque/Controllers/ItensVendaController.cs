@@ -27,6 +27,20 @@ namespace ControleEstoque.Controllers
             return await _context.itemVenda.ToListAsync();
         }
 
+        [HttpGet("itensDaVenda/{idVenda}")]
+        public async Task<ActionResult<IEnumerable<ItemVenda>>> GetitemVendaPedido(int? idVenda)
+        {
+            var itemVenda = await _context.itemVenda.Where(x => x.idVenda == idVenda).ToListAsync();
+              
+
+            if (itemVenda == null)
+            {
+                return NotFound();
+            }
+
+            return itemVenda;
+        }
+
         // GET: api/ItensVenda/5
         [HttpGet("{id}")]
         public async Task<ActionResult<ItemVenda>> GetItemVenda(int? id)
