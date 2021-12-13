@@ -14,7 +14,7 @@ export default function IncluirEstoque() {
         console.log(formulario);
         
         try {
-            const response = await api.post("https://controle-estoque-seven.vercel.app//api/estoques", formulario);    
+            const response = await api.post("https://controleestoqueapi.herokuapp.com/api/estoques", formulario);    
             alert("Seu estoque foi salvo");
             setFormulario({descricao: ""});
         } catch (error) {

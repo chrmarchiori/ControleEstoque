@@ -21,7 +21,7 @@ export default function IncluirProduto() {
       
       try {
           api.create(formulario)
-          const response = await api.post("https://controle-estoque-seven.vercel.app/api/movimentacoesestoque", formulario);    
+          const response = await api.post("https://controleestoqueapi.herokuapp.com/api/movimentacoesestoque", formulario);    
           alert("Sua movimentação foi salva");
           setFormulario({idEstoque: 0, 
             idProduto: 0, 
