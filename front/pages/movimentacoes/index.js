@@ -15,7 +15,7 @@ export default function Movimentacoes() {
     console.log("tá passando");
 
     try {
-        await api.delete("https://localhost:44380/api/produtos/" + id);    
+        await api.delete("https://controle-estoque-seven.vercel.app/api/produtos/" + id);    
         alert("Sua movimentação foi deletado com sucesso");
     } catch (error) {
         console.log(error);
@@ -28,7 +28,7 @@ export default function Movimentacoes() {
 
   const getMovimentacoes = async () => {
     try {
-      const {data} = await api.get("https://localhost:44380/api/movimentacoesestoque");
+      const {data} = await api.get("https://controle-estoque-seven.vercel.app/api/movimentacoesestoque");
       console.log(data);
       setMovimentacoes(data);
     } catch (error) {

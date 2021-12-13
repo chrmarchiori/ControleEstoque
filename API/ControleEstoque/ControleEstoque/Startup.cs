@@ -68,7 +68,7 @@ namespace ControleEstoque
             app.UseHttpsRedirection();
             app.UseRouting();
 
-            app.UseCors(builder => builder.WithOrigins("http://localhost:3000")
+            app.UseCors(builder => builder.WithOrigins("https://controle-estoque-seven.vercel.app/")
                                 .AllowAnyMethod()
                                 .AllowAnyHeader());
 

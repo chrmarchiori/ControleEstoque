@@ -19,7 +19,7 @@ export default function IncluirVendas() {
         console.log(formulario);
         
         try {
-            const response = await api.post("https://localhost:44380/api/vendas", formulario);    
+            const response = await api.post("https://controle-estoque-seven.vercel.app/api/vendas", formulario);    
             alert("Sua venda foi salva");
             setIdVenda(response.data.id);
             console.log(response.data.id);

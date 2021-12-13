@@ -15,7 +15,7 @@ export default function Vendas() {
     console.log("tá passando");
 
     try {
-        await api.delete("https://localhost:44380/api/produtos/" + id);    
+        await api.delete("https://controle-estoque-seven.vercel.app/api/produtos/" + id);    
         alert("Seu produto foi deletado com sucesso");
     } catch (error) {
         console.log(error);
@@ -28,7 +28,7 @@ export default function Vendas() {
 
   const getVendas = async () => {
     try {
-      const {data} = await api.get("https://localhost:44380/api/vendas");
+      const {data} = await api.get("https://controle-estoque-seven.vercel.app/api/vendas");
       console.log(data);
       setVendas(data);
     } catch (error) {

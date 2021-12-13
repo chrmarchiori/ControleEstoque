@@ -16,7 +16,7 @@ export default function IncluirProduto() {
       
       try {
           api.create(formulario)
-          const response = await api.post("https://localhost:44380/api/produtos", formulario);    
+          const response = await api.post("https://controle-estoque-seven.vercel.app/api/produtos", formulario);    
           alert("Seu produto foi salvo");
           setFormulario({descricao: "", preco: 0});
       } catch (error) {

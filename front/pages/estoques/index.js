@@ -12,7 +12,7 @@ export default function Estoques() {
 
   const getEstoques = async () => {
     try {
-      const {data} = await api.get("https://localhost:44380/api/estoques");
+      const {data} = await api.get("https://controle-estoque-seven.vercel.app//api/estoques");
       console.log(data);
       setEstoques(data);
     } catch (error) {
