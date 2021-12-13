@@ -110,7 +110,7 @@ export default function IncluirVendas() {
           </div>
         </form>
         
-        <a class="btn btn-primary" href={"/itens/" + idVenda} role="button">Itens da Venda</a>
+        <a class="btn btn-primary" role="button">Itens da Venda</a>
 
       </main>
 

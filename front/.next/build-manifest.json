@@ -30,15 +30,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/vendas": [
+    "/produtos": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/vendas.js"
-    ],
-    "/vendas/incluir": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/vendas/incluir.js"
+      "static/chunks/pages/produtos.js"
     ]
   },
   "ampFirstPages": []
